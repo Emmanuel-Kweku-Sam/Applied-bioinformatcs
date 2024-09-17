@@ -1,7 +1,6 @@
 Lecture 1
 
 3- output
-
 ### Doctor! Doctor! Give me the news.
 ### Checking symptoms ...
 ### bwa           ... OK
