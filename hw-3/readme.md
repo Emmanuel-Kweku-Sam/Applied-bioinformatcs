@@ -12,7 +12,7 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/026/625/GCF_000026625.1_ASM2
 ```
 ### files were unzipped using the gunzip command
 
-```basha
+```bash
 gunzip GCF_000026625.1_ASM2662v1_genomic.fna.gz
 gunzip GCF_000026625.1_ASM2662v1_genomic.gff.gz
 ```
