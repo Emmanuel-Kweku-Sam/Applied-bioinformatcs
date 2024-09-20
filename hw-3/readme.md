@@ -1,16 +1,16 @@
 The genome for Escherichia coli UTI89 was downloaded, and the corresponding FASTA file was successfully opened in a text editor to verify its contents. The genome sequence consisted of nucleotide sequences in the proper FASTA format, starting with the header line indicating the organism and strain (screenshot labelled- Genome).
 
-# Downloading the E. coli UTI89 genome FASTA file
+### Downloading the E. coli UTI89 genome FASTA file
 ```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/026/625/GCF_000026625.1_ASM2662v1_genomic.fna.gz
 ```
 
-# Downloading the GFF file for gene annotations
+### Downloading the GFF file for gene annotations
 
 ```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/026/625/GCF_000026625.1_ASM2662v1_genomic.gff.gz
 ```
-# files were unzipped using the gunzip command
+### files were unzipped using the gunzip command
 
 ```basha
 gunzip GCF_000026625.1_ASM2662v1_genomic.fna.gz
