@@ -24,19 +24,19 @@ Loading Files in IGV
 
 The FASTA file and annotated file were loaded into IGV for genome visualization.IGV displayed the genome track and allowed zooming into the genome to visualize specific regions. The gene annotations were successfully aligned with the genome, and specific genes such as "ttdT" and "tsaD" were visible upon zooming into particular regions of the genome
 
-## Visualization 
+### Visualization 
 
-### Image 1: IGV Image
-The following image shows the genome visualization in IGV:
+#### Image 1: IGV Image
+The image shows the genome and annotation in IGV:
 
 ![IGV Genome Visualization](image-1.png)
 
-### Image 2: Genome
-This image shows the overall genome:
+#### Image 2: Genome
+This image shows the genome:
 
 ![Genome](image-2.png)
 
-### Image 3: Genes Only
+#### Image 3: Genes Only
 This image represents the gene annotations filtered from the GFF file:
 
 ![Genes Only](image-3.png)
