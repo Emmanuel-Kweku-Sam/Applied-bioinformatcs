@@ -1,12 +1,12 @@
 
-#### Genome Analysis and Read Simulation Report
+#### Read Simulation Report
 
-#### 1. Selected Genome: Escherichia coli (E. coli)
+#### 1. Selected Genome: Escherichia coli 
 
 #### Download Information:
 - **Genome Accession**: GCF_000005845.2
 - **Organism**: *Escherichia coli* str. K-12 substr. MG1655
-- **Download Link**: [E. coli Genome](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz)
+- **Link**: [E. coli Genome](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz)
 
 #### Genome Size and Chromosome Information:
 - **Size of FASTA file (gzipped)**: 1.1 MB
@@ -35,27 +35,37 @@
 #### Discussion:
 Using the parameters for 10x coverage, 464,000 reads were generated for eachpaired-end reads. The average read length was set to 100 bp for each read. The total size of the FASTQ files was 224 MB before compression and 44 MB after compression, showing a space saving of around 80%.
 
-#### Same Coverage with different parameters?
-Yes. Adjustment of read length alters the number of reads required to maintain the same coverage. eg if the read length was increased to 150 bp, the number of reads needed for 10x coverage would decrease proportionally.
+#### Same Coverage with different parameters
+Yes this is because adjustment of read length alters the number of reads required to maintain the same coverage, eg, if the read length was increased to 150 bp, the number of reads needed for 10x coverage would decrease proportionally.
 
-#### 3. Estimating Data for Other Genomes at 30x Coverage
-
-Here, we estimate the size of the FASTA file, number of reads, and size of the FASTQ files before and after compression for **Yeast**, **Drosophila**, and **Human** genomes at 30x coverage, using the results from E. coli as a reference.
+#### 3. Estimating Data for Other Genomes at 30x Coverage using results from E. coli
 
 #### Yeast Genome (12 Mb genome):
-- **Estimated number of reads**: \( \frac{12,000,000 \times 30}{100} = 3,600,000 \)
-- **Estimated FASTQ file size**: \( \frac{3,600,000}{464,000} \times 112 \text{MB} \approx 870 \text{MB} \)
-- **Estimated compressed size**: \( 870 \times 0.2 = 174 \text{MB} \)
+
+- **Estimated number of reads**:  
+  - (12,000,000 bp × 30) ÷ 100 bp = 3,600,000 reads
+- **Estimated FASTQ file size**:  
+  - (3,600,000 reads ÷ 464,000 reads) × 112 MB = 870 MB
+- **Estimated compressed size**:  
+  - 870 MB × 0.2 = 174 MB
 
 #### Drosophila Genome (140 Mb genome):
-- **Estimated number of reads**: \( \frac{140,000,000 \times 30}{100} = 42,000,000 \)
-- **Estimated FASTQ file size**: \( \frac{42,000,000}{464,000} \times 112 \text{MB} \approx 10.1 \text{GB} \)
-- **Estimated compressed size**: \( 10.1 \times 0.2 = 2.02 \text{GB} \)
+
+- **Estimated number of reads**:  
+  - (140,000,000 bp × 30) ÷ 100 bp = 42,000,000 reads
+- **Estimated FASTQ file size**:  
+  - (42,000,000 reads ÷ 464,000 reads) × 112 MB = 10.1 GB
+- **Estimated compressed size**:  
+  - 10.1 GB × 0.2 = 2.02 GB
 
 #### Human Genome (3.2 Gb genome):
-- **Estimated number of reads**: \( \frac{3,200,000,000 \times 30}{100} = 960,000,000 \)
-- **Estimated FASTQ file size**: \( \frac{960,000,000}{464,000} \times 112 \text{MB} \approx 256 \text{GB} \)
-- **Estimated compressed size**: \( 256 \times 0.2 = 51.2 \text{GB} \)
+
+- **Estimated number of reads**:  
+  - (3,200,000,000 bp × 30) ÷ 100 bp = 960,000,000 reads
+- **Estimated FASTQ file size**:  
+  - (960,000,000 reads ÷ 464,000 reads) × 112 MB = 256 GB
+- **Estimated compressed size**:  
+  - 256 GB × 0.2 = 51.2 GB
 
 #### Conclusion
 
