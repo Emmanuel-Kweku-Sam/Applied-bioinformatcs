@@ -1,0 +1,55 @@
+#### FASTQ Quality Control Report
+
+#### 1. Data Download
+   - **Organism**: *Escherichia coli*
+   - **SRA Accession**: SRR30895571
+   - **Instrument**: Illumina
+   - **Download Command**: 
+
+     ```bash
+     fastq-dump --split-files SRR30895571
+     ```
+
+#### 2. Preliminary Evaulation
+   - **Tool**: FastQC
+   - **Files Assessed**: 
+     - `SRR30895571_1.fastq`
+     - `SRR30895571_2.fastq`
+
+   - **Results**:
+     - **Issues Identified**:
+       - Adapter content detected.
+       - Low per-base sequence quality towards the ends of the reads.
+       - Overrepresented sequences found.
+
+#### 3. Quality Improvement
+   - **Tool**: Trimmomatic
+   - **Command**:
+
+     ```bash
+     trimmomatic PE SRR30895571_1.fastq SRR30895571_2.fastq \
+     SRR30895571_1_paired.fq.gz SRR30895571_1_unpaired.fq.gz \
+     SRR30895571_2_paired.fq.gz SRR30895571_2_unpaired.fq.gz \
+     ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
+     ```
+
+   - **Parameters**:
+     - `ILLUMINACLIP`: Removed adapter sequences.
+     - `SLIDINGWINDOW:4:20`: Trimmed low-quality regions with a window size of 4 and quality threshold of 20.
+     - `MINLEN:36`: Removed reads shorter than 36 bases.
+
+#### 4. Post Evaulation
+   - **Tool**: FastQC
+   - **Files Assessed**:
+     - `SRR30895571_1_paired.fq.gz`
+     - `SRR30895571_2_paired.fq.gz`
+
+   - **Results**:
+     - **Improvements Observed**:
+       - Reduced adapter content.
+       - Improved overall quality scores.
+       - Lower sequence duplication levels.
+
+#### 5.Evaulation
+   - Trimming significantly improved the quality of the dataset by removing adapter sequences and low-quality bases.
+   
