@@ -17,7 +17,20 @@ fastq-dump --split-files SRR2033906
 ```bash
 fastqc SRR2033906_1.fastq SRR2033906_2.fastq
 ```
-#### Report
+#### Report 
+
+#### Image 1
+
+
+![IGV Genome Visualization](image 1.png)
+
+#### Image 2: Genome
+
+![Genome](Per base seq.png)
+
+#### Image 3: 
+
+![Genes Only](Per base seq content.png)
 
 ```bash
 [FastQC Report for SRR2033906_1](SRR2033906_1_fastqc.html)
