@@ -30,4 +30,4 @@ fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
 open SRR2033984_1_trimmed_fastqc.html
 open SRR2033984_2_trimmed_fastqc.html
 ```
-#### Compare the fastqc reports before and after trimming
+

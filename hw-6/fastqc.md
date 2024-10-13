@@ -54,4 +54,4 @@ fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
 
 Conclusion 
 
-After trimming the E. coli sequence, the quality of both reads improved significantly. For Read 1, the percentage of bases with a Q20 score increased from approximately 85% to 95-97%, and those with a Q30 score improved from around 75% to 85-88%. Similarly, for Read 2, the proportion of bases with a Q20 score rose from about 83% to 94-96%, while Q30 scores increased from roughly 73% to 83-86%. The trimming process effectively removed low-quality regions, resulting in a much higher percentage of high-quality bases.
+After trimming the E. coli sequence, the quality of both reads improved significantly. For Read 1, the percentage of bases with a Q20 score increased from approximately 85% to 95-97%, and those with a Q30 score improved from around 75% to 85-88%. Similarly, for Read 2, the proportion of bases with a Q20 score rose from about 83% to 94-96%, while Q30 scores increased from about 73% to 83-86%. The trimming process effectively removed low-quality regions, resulting in a much higher percentage of high-quality bases.
