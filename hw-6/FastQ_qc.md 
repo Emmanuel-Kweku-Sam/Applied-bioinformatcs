@@ -12,9 +12,9 @@
 
 #### 2. Preliminary Evaulation
    - **Tool**: FastQC
-   - **Files Assessed**: 
-     - `SRR30895571_1.fastq`
-     - `SRR30895571_2.fastq`
+[FastQC Report for SRR2033906_1](SRR2033906_1_fastqc.html)
+[FastQC Report for SRR2033906_2](SRR2033906_2_fastqc.html)
+
 
    - **Results**:
      - **Issues Identified**:
