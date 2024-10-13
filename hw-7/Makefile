@@ -35,6 +35,12 @@ simulate:
 download:
 	fastq-dump --split-files $(SRR)
 
+#### Run FastQC on raw reads
+raw_qc:
+	fastqc $(SRR)_1.fastq $(SRR)_2.fastq
+	open $(SRR)_1_fastqc.html
+	open $(SRR)_2_fastqc.html	
+
 #### Trim reads using fastp 
 trim:
 	fastp -i $(SRR)_1.fastq -o $(SRR)_1_trimmed.fastq -I $(SRR)_2.fastq -O $(SRR)_2_trimmed.fastq
@@ -48,9 +54,11 @@ qc:
 
 
 #### how to run files
-#### make usage : This will display help information about the different tasks the Makefile can perform
-#### make genome : This will download the E. coli genome
-#### make simulate: This will simulate reads for the genome
-#### make download: This will download reads from SRA
-#### make trim: This will trim the reads using fastp
-#### make qc: This will run FastQC on the trimmed reads
+
+##### make usage : This will display help information about the different tasks the Makefile can perform
+##### make genome : This will download the E. coli genome
+##### make simulate: This will simulate reads for the genome
+##### make download: This will download reads from SRA
+##### make raw_qc: This will run FastQC on the raw reads
+##### make trim: This will trim the reads using fastp
+##### make qc: This will run FastQC on the trimmed reads
