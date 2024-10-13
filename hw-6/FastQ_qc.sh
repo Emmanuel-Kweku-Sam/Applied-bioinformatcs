@@ -1,17 +1,17 @@
 #### Download data from SRA
 ```bash
-fastq-dump --split-files SRR2033906 
+fastq-dump --split-files SRR2033984 
 ```
 
 #### Run FastQC 
 ```bash
-fastqc SRR2033906_1.fastq SRR2033906_2.fastq
+fastqc SRR2033984_1.fastq SRR2033984_2.fastq
 ```
 
 #### Check file 
 ```bash
-open SRR2033906_1_fastqc.html
-open SRR2033906_2_fastqc.html
+open SRR2033984_1_fastqc.html
+open SRR2033984_2_fastqc.html
 ```
 
 # Step 3: Trim reads usinf fastp
