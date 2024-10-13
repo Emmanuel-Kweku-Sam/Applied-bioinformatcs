@@ -1,63 +1,57 @@
 #### FASTQ Quality Control Report
 
-#### 1. Data Download
+#### Data 
    - **Organism**: *Escherichia coli*
    - **SRA Accession**: SRR30895571
-   - **Instrument**: Illumina
+ Publication link: https://pubmed.ncbi.nlm.nih.gov/25888672/
 
 
 #### Download data from SRA
-
-#### Downloading the E. coli UTI89 genome FASTA file
 ```bash
 fastq-dump --split-files SRR2033906
 ```
 
-#### Report Preliminary Evaulation
+#### Initial Qc 
 ```bash
 fastqc SRR2033906_1.fastq SRR2033906_2.fastq
 ```
+
 #### Report 
-### Visualization
 
-#### Image 1: Per Base Sequence Quality
-This image shows the per base sequence quality from the FastQC report:
+### Image 1: Per base sequence quality (before trimming)
+![Per base sequence quality before trimming](image_1.png)
 
-![Per Base Sequence Quality](Per%20base%20seq.png)
+### Image 2: Per base sequence content (before trimming)
+![Per base sequence content before trimming](image_2.png)
 
-#### Image 2: Per Base Sequence Content
-This image shows the per base sequence content from the FastQC report:
-
-![Per Base Sequence Content](Per%20base%20seq%20content.png)
-
-#### Image 3: Additional Analysis Image
-This is an additional image from the analysis:
-
-![Additional Image](Image%203.png)
+### Image 3: Sequence length distribution (before trimming)
+![Sequence length distribution before trimming](image_3.png)
 
 
-
+### Trim Reads
 ```bash
-[FastQC Report for SRR2033906_1](SRR2033906_1_fastqc.html)
-[FastQC Report for SRR2033906_2](SRR2033906_2_fastqc.html)
+fastp -i SRR2033984_1.fastq -o SRR2033984_1_trimmed.fastq -I SRR2033984_2.fastq -O SRR2033984_2_trimmed.fastq
 ```
 
-### Downloading the GFF file for gene annotations
+### fast Qc on trimmed reads
 
 ```bash
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/026/625/GCF_000026625.1_ASM2662v1_genomic.gff.gz
-```
-### files were unzipped using the gunzip command
-
-```bash
-gunzip GCF_000026625.1_ASM2662v1_genomic.fna.gz
-gunzip GCF_000026625.1_ASM2662v1_genomic.gff.gz
+fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
 ```
 
-The downloaded GFF file contained various features, including CDS, ribosome entry sites, and gene features etc. Using VS code, the GFF file was opened, and intervals corresponding to the "gene" feature were identified and extracted.A new file, genesonly.gff was created by isolating all the lines where the third column indicated gene, ensuring that only gene-related annotations were retained.
+#### Report 
+
+### Image 4: Per base sequence quality (after trimming)
+![Per base sequence quality after trimming](image_4.png)
+
+### Image 5: Per base sequence content (after trimming)
+![Per base sequence content after trimming](image_5.png)
+
+### Image 6: Sequence length distribution (after trimming)
+![Sequence length distribution after trimming](image_6.png)
 
 
-Loading Files in IGV 
 
-The FASTA file and annotated file were loaded into IGV for genome visualization.IGV displayed the genome track and allowed zooming into the genome to visualize specific regions. The gene annotations were successfully aligned with the genome, and specific genes such as "ttdT" and "tsaD" were visible upon zooming into particular regions of the genome
+Conclusion 
 
+After trimming the E. coli sequence, the quality of both reads improved significantly. For Read 1, the percentage of bases with a Q20 score increased from approximately 85% to 95-97%, and those with a Q30 score improved from around 75% to 85-88%. Similarly, for Read 2, the proportion of bases with a Q20 score rose from about 83% to 94-96%, while Q30 scores increased from roughly 73% to 83-86%. The trimming process effectively removed low-quality regions, resulting in a much higher percentage of high-quality bases.

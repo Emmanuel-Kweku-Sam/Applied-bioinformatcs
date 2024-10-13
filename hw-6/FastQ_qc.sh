@@ -1,29 +1,33 @@
 #### Download data from SRA
-
 ```bash
-fastq-dump --split-files SRR30895571
+fastq-dump --split-files SRR2033906 
 ```
 
-#### Run FastQC on raw reads
-
+#### Run FastQC 
 ```bash
-fastqc SRR30895571_1.fastq SRR30895571_2.fastq
-```
-# Step 3: Trim reads with Trimmomatic
-
-```bash
-trimmomatic PE SRR30895571_1.fastq SRR30895571_2.fastq \
-SRR30895571_1_paired.fq.gz SRR30895571_1_unpaired.fq.gz \
-SRR30895571_2_paired.fq.gz SRR30895571_2_unpaired.fq.gz \
-ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
+fastqc SRR2033906_1.fastq SRR2033906_2.fastq
 ```
 
-# Step 4: Run FastQC on cleaned reads
-
+#### Check file 
 ```bash
-fastqc SRR30895571_1_paired.fq.gz SRR30895571_2_paired.fq.gz
+open SRR2033906_1_fastqc.html
+open SRR2033906_2_fastqc.html
 ```
 
+# Step 3: Trim reads usinf fastp
+
+```bash
+fastp -i SRR2033984_1.fastq -o SRR2033984_1_trimmed.fastq -I SRR2033984_2.fastq -O SRR2033984_2_trimmed.fastq
+```
+
+# Step 4: Run FastQC on trimmed file 
+
+```bash
+fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
+```
+#### Check file 
+```bash
+open SRR2033984_1_trimmed_fastqc.html
+open SRR2033984_2_trimmed_fastqc.html
+```
 #### Compare the fastqc reports before and after trimming
-
-
