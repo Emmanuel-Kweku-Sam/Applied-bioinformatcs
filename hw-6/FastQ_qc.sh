@@ -14,13 +14,13 @@ open SRR2033984_1_fastqc.html
 open SRR2033984_2_fastqc.html
 ```
 
-# Step 3: Trim reads usinf fastp
+#### Trim reads usinf fastp
 
 ```bash
 fastp -i SRR2033984_1.fastq -o SRR2033984_1_trimmed.fastq -I SRR2033984_2.fastq -O SRR2033984_2_trimmed.fastq
 ```
 
-# Step 4: Run FastQC on trimmed file 
+#### FastQC on trimmed file 
 
 ```bash
 fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq

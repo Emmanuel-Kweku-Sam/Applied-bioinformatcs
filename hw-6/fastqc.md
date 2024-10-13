@@ -2,18 +2,18 @@
 
 #### Data 
    - **Organism**: *Escherichia coli*
-   - **SRA Accession**: SRR30895571
+   - **SRA Accession**: SRR2033984
  Publication link: https://pubmed.ncbi.nlm.nih.gov/25888672/
 
 
 #### Download data from SRA
 ```bash
-fastq-dump --split-files SRR2033906
+fastq-dump --split-files SRR2033984
 ```
 
 #### Initial Qc 
 ```bash
-fastqc SRR2033906_1.fastq SRR2033906_2.fastq
+fastqc SRR2033984_1.fastq SRR2033984_2.fastq
 ```
 
 #### Report 
