@@ -48,7 +48,7 @@ qc:
 
 
 #### how to run files
-#### make usage : his will display help information about the different tasks the Makefile can perform
+#### make usage : This will display help information about the different tasks the Makefile can perform
 #### make genome : This will download the E. coli genome
 #### make simulate: This will simulate reads for the genome
 #### make download: This will download reads from SRA
