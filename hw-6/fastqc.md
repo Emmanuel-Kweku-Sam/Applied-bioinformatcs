@@ -18,22 +18,22 @@ fastqc SRR2033984_1.fastq SRR2033984_2.fastq
 
 #### Report 
 
-### Image 1: Per base sequence quality (before trimming)
+#### Image 1: Per base sequence quality (before trimming)
 ![Per base sequence quality before trimming](image_1.png)
 
-### Image 2: Per base sequence content (before trimming)
+#### Image 2: Per base sequence content (before trimming)
 ![Per base sequence content before trimming](image_2.png)
 
-### Image 3: Sequence length distribution (before trimming)
+#### Image 3: Sequence length distribution (before trimming)
 ![Sequence length distribution before trimming](image_3.png)
 
 
-### Trim Reads
+#### Trim Reads
 ```bash
 fastp -i SRR2033984_1.fastq -o SRR2033984_1_trimmed.fastq -I SRR2033984_2.fastq -O SRR2033984_2_trimmed.fastq
 ```
 
-### fast Qc on trimmed reads
+#### fast Qc on trimmed reads
 
 ```bash
 fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
@@ -41,13 +41,13 @@ fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
 
 #### Report 
 
-### Image 4: Per base sequence quality (after trimming)
+#### Image 4: Per base sequence quality (after trimming)
 ![Per base sequence quality after trimming](image_4.png)
 
-### Image 5: Per base sequence content (after trimming)
+#### Image 5: Per base sequence content (after trimming)
 ![Per base sequence content after trimming](image_5.png)
 
-### Image 6: Sequence length distribution (after trimming)
+#### Image 6: Sequence length distribution (after trimming)
 ![Sequence length distribution after trimming](image_6.png)
 
 
