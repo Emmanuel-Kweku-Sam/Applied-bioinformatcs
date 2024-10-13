@@ -18,19 +18,24 @@ fastq-dump --split-files SRR2033906
 fastqc SRR2033906_1.fastq SRR2033906_2.fastq
 ```
 #### Report 
+### Visualization
 
-#### Image 1
+#### Image 1: Per Base Sequence Quality
+This image shows the per base sequence quality from the FastQC report:
+
+![Per Base Sequence Quality](Per%20base%20seq.png)
+
+#### Image 2: Per Base Sequence Content
+This image shows the per base sequence content from the FastQC report:
+
+![Per Base Sequence Content](Per%20base%20seq%20content.png)
+
+#### Image 3: Additional Analysis Image
+This is an additional image from the analysis:
+
+![Additional Image](Image%203.png)
 
 
-![IGV Genome Visualization](image 1.png)
-
-#### Image 2: Genome
-
-![Genome](Per base seq.png)
-
-#### Image 3: 
-
-![Genes Only](Per base seq content.png)
 
 ```bash
 [FastQC Report for SRR2033906_1](SRR2033906_1_fastqc.html)
