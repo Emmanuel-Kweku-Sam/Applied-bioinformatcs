@@ -1,5 +1,3 @@
-#### FASTQ Quality Control Report
-
 
 
 #### make usage 
@@ -32,8 +30,36 @@ simulate:
 	gzip $(R2)
 ```
 
-#### 
+#### make download 
 
 ```bash
-fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
+ownload:
+	fastq-dump --split-files $(SRR)
 ```
+
+
+#### make raw_qc
+
+```bash
+raw_qc:
+	fastqc $(SRR)_1.fastq $(SRR)_2.fastq
+	open $(SRR)_1_fastqc.html
+	open $(SRR)_2_fastqc.html	
+```
+
+#### make trim 
+
+```bash
+trim:
+	fastp -i $(SRR)_1.fastq -o $(SRR)_1_trimmed.fastq -I $(SRR)_2.fastq -O $(SRR)_2_trimmed.fastq
+```
+
+#### make qc
+
+```bash
+qc:
+	fastqc $(SRR)_1_trimmed.fastq $(SRR)_2_trimmed.fastq
+	open $(SRR)_1_trimmed_fastqc.html
+	open $(SRR)_2_trimmed_fastqc.htmlq
+```
+
