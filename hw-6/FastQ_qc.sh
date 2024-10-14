@@ -1,33 +1,43 @@
-#### Download data from SRA
-```bash
-fastq-dump --split-files SRR2033984 
-```
 
-#### Run FastQC 
-```bash
-fastqc SRR2033984_1.fastq SRR2033984_2.fastq
-```
 
-#### Check file 
-```bash
-open SRR2033984_1_fastqc.html
-open SRR2033984_2_fastqc.html
-```
+# Set trace
+set -xue
 
-#### Trim reads usinf fastp
+# SRR number
+SRR=SRR2033984
 
-```bash
-fastp -i SRR2033984_1.fastq -o SRR2033984_1_trimmed.fastq -I SRR2033984_2.fastq -O SRR2033984_2_trimmed.fastq
-```
+# Number of reads to sample 
+N=10000
 
-#### FastQC on trimmed file 
+# Output read names
+R1=reads/${SRR}_1.fastq
+R2=reads/${SRR}_2.fastq
 
-```bash
-fastqc SRR2033984_1_trimmed.fastq SRR2033984_2_trimmed.fastq
-```
-#### Check file 
-```bash
-open SRR2033984_1_trimmed_fastqc.html
-open SRR2033984_2_trimmed_fastqc.html
-```
+# Trimmed read names
+T1=reads/${SRR}_1_trimmed.fastq
+T2=reads/${SRR}_2_trimmed.fastq
 
+# The reads directory
+RDIR=reads
+
+# The reports directory
+RPDIR=reports
+
+# Make the directories
+mkdir -p ${RDIR} ${RPDIR}
+
+# Download the FastQ files from SRA
+fastq-dump -X ${N} --split-files -O ${RDIR} ${SRR}
+
+# Run FastQC on the raw reads to visualize the quality
+fastqc -q -o ${RPDIR} ${R1} ${R2}
+
+# Run fastp to trim the reads
+fastp -i ${R1} -o ${T1} -I ${R2} -O ${T2}
+
+# Run FastQC on the trimmed reads to visualize the quality
+fastqc -q -o ${RPDIR} ${T1} ${T2}
+
+# Open the FastQC reports for trimmed reads (optional)
+open ${RPDIR}/${SRR}_1_trimmed_fastqc.html
+open ${RPDIR}/${SRR}_2_trimmed_fastqc.html
