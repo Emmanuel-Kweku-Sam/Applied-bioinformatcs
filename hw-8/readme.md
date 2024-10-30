@@ -15,22 +15,10 @@ make genome
 make download
 ```
 
-#### QC raw reads
-
-```bash
-make raw_qc:
-```
-
 #### Trim reads
 
 ```bash
 make trim
-```
-
-#### Qc trimmed reads
-
-```bash
-make qc
 ```
 
 #### Index
@@ -39,14 +27,13 @@ make qc
 make index
 ```
 
-#### Allign
+#### Align
 
 ```bash
-make allign
+make align
 ```
 
-#### Allign
-
+#### Stats
 
 ```bash
 make stats

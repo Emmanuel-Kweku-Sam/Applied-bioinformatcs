@@ -24,18 +24,12 @@ genome:
 	wget -N $(GENOME_ACC)
 	gunzip -f $(GENOME).gz
 
-#### Download SRA reads
+#### Download SRA reads with a limited subset
 download: $(R1) $(R2)
 
 $(R1) $(R2):
-	fastq-dump --split-files $(SRR)
+	fastq-dump --split-files --max-spot 100000 --gzip $(SRR)
 
-#### Run FastQC on raw reads
-raw_qc: qc_reports/$(SRR)_1_fastqc.html qc_reports/$(SRR)_2_fastqc.html
-
-qc_reports/$(SRR)_1_fastqc.html qc_reports/$(SRR)_2_fastqc.html: $(R1) $(R2)
-	mkdir -p qc_reports
-	fastqc $(R1) $(R2) -o qc_reports
 
 #### Trim reads using fastp
 trim: $(T1) $(T2)
@@ -43,12 +37,6 @@ trim: $(T1) $(T2)
 $(T1) $(T2): $(R1) $(R2)
 	fastp -i $(R1) -I $(R2) -o $(T1) -O $(T2) -h fastp_report.html
 
-#### Run FastQC on trimmed reads
-qc: qc_reports/$(SRR)_1_trimmed_fastqc.html qc_reports/$(SRR)_2_trimmed_fastqc.html
-
-qc_reports/$(SRR)_1_trimmed_fastqc.html qc_reports/$(SRR)_2_trimmed_fastqc.html: $(T1) $(T2)
-	mkdir -p qc_reports
-	fastqc $(T1) $(T2) -o qc_reports
 
 #### Index the reference genome
 index: genome
