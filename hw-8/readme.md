@@ -39,6 +39,12 @@ make align
 make stats
 ```
 
+#### All
+
+```bash
+make all
+```
+
 #### Image 1: Per base sequence quality (before trimming)
 ![IGV file](Image1.png)
 

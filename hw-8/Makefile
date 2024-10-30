@@ -54,3 +54,6 @@ $(SRR)_aligned.bam: $(T1) $(T2) index
 stats: $(SRR)_aligned.bam
 	samtools flagstat $(SRR)_aligned.bam > $(SRR)_alignment_stats.txt
 	cat $(SRR)_alignment_stats.txt
+
+#### All: Run all 
+all: genome download trim index align stats
