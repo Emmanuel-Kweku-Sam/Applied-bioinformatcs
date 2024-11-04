@@ -6,6 +6,8 @@ R1 = $(SRR)_1.fastq
 R2 = $(SRR)_2.fastq
 T1 = $(SRR)_1_trimmed.fastq
 T2 = $(SRR)_2_trimmed.fastq
+BAM = $(SRR)_aligned.bam
+ALIGN_STATS = $(SRR)_alignment_stats.txt
 
 #### Usage: Help information
 usage:
@@ -18,42 +20,41 @@ usage:
 	@echo "  make index    - Index the reference genome"
 	@echo "  make align    - Align trimmed reads to the genome"
 	@echo "  make stats    - Generate alignment statistics"
+	@echo "  make all      - Run the entire pipeline"
 
-#### Download the E. coli genome
+#### Download genome
 genome:
 	wget -N $(GENOME_ACC)
 	gunzip -f $(GENOME).gz
 
-#### Download SRA reads with a limited subset
+#### Download SRA 
 download: $(R1) $(R2)
 
 $(R1) $(R2):
 	fastq-dump --split-files --max-spot 100000 --gzip $(SRR)
 
-
-#### Trim reads using fastp
+#### Trim reads 
 trim: $(T1) $(T2)
 
 $(T1) $(T2): $(R1) $(R2)
 	fastp -i $(R1) -I $(R2) -o $(T1) -O $(T2) -h fastp_report.html
 
-
-#### Index the reference genome
+#### Index  genome
 index: genome
 	samtools faidx $(GENOME)
 
-#### Align trimmed reads and generate sorted BAM file
-align: $(SRR)_aligned.bam
+#### Align and generate BAM file
+align: $(BAM)
 
-$(SRR)_aligned.bam: $(T1) $(T2) index
+$(BAM): $(T1) $(T2) index
 	bwa index $(GENOME)
-	bwa mem $(GENOME) $(T1) $(T2) | samtools view -bS - | samtools sort -o $(SRR)_aligned.bam
-	samtools index $(SRR)_aligned.bam
+	bwa mem $(GENOME) $(T1) $(T2) | samtools view -bS - | samtools sort -o $(BAM)
+	samtools index $(BAM)
 
-#### Generate alignment statistics
-stats: $(SRR)_aligned.bam
-	samtools flagstat $(SRR)_aligned.bam > $(SRR)_alignment_stats.txt
-	cat $(SRR)_alignment_stats.txt
+#### statistics
+stats: $(BAM)
+	samtools flagstat $(BAM) > $(ALIGN_STATS)
+	cat $(ALIGN_STATS)
 
-#### All: Run all 
+#### All: Run all
 all: genome download trim index align stats
