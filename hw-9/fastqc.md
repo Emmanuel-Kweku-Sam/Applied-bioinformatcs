@@ -47,3 +47,8 @@ make 4
 ```bash
 make 5
 ```
+
+#### stats
+```bash
+make run_all
+```

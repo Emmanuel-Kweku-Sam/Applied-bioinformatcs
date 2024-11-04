@@ -7,7 +7,7 @@ R2 = $(SRR)_2.fastq
 T1 = $(SRR)_1_trimmed.fastq
 T2 = $(SRR)_2_trimmed.fastq
 
-.PHONY: usage genome download index align stats 1 2 3 4 5
+.PHONY: usage genome download index align stats 1 2 3 4 5 run_all
 
 usage:
 	@echo "Usage:"
@@ -21,6 +21,9 @@ usage:
 	@echo "  make 3       - Q3: Properly paired reverse reads in the first pair"
 	@echo "  make 4       - Q4: Create BAM with filtered alignments"
 	@echo "  make 5       - Q5: Compare flagstats of BAM files"
+	@echo "  make run_all - Run all steps in sequence"
+
+run_all: genome download index align stats 1 2 3 4 5
 
 genome:
 	wget -N $(GENOME_ACC)
@@ -70,3 +73,4 @@ filtered.bam: $(SRR)_aligned.bam
 	samtools flagstat $(SRR)_aligned.bam > original_flagstat.txt
 	samtools flagstat filtered.bam > filtered_flagstat.txt
 	diff original_flagstat.txt filtered_flagstat.txt
+
